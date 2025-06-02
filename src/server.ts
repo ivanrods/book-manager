@@ -1,11 +1,13 @@
-import express, { Request, Response } from 'express';
-const app = express()
-const port = 3000
+import express from "express";
+import booksRouter from "./routes/books";
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hello World!')
-})
+const app = express();
+const port = 3000;
+
+app.use(express.json());
+
+app.use("/books", booksRouter);
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+  console.log(`Server running on port ${port}`);
+});
