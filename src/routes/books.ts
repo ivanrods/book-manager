@@ -2,16 +2,16 @@ import { Router } from "express";
 import { validateBook } from "../middlewares/validateBook";
 
 import {
-  getAllBooks,
-  getBookById,
+  GetAllBooks,
+  GetBookById,
   CreateBook,
   UpdateBookById,
   DeleteBookById,
-} from "../controllers/bookController";
+} from "../controllers";
 const router = Router();
 
-router.get("/", getAllBooks);
-router.get("/:id", getBookById);
+router.get("/", GetAllBooks);
+router.get("/:id", GetBookById);
 router.post("/", validateBook, CreateBook);
 router.patch("/:id", validateBook, UpdateBookById);
 router.delete("/:id", DeleteBookById);
