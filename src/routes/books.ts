@@ -1,4 +1,5 @@
-import { Router, Request, Response } from "express";
+import { Router } from "express";
+import { validateBook } from "../middlewares/validateBook";
 
 import {
   getAllBooks,
@@ -11,8 +12,8 @@ const router = Router();
 
 router.get("/", getAllBooks);
 router.get("/:id", getBookById);
-router.post("/", CreateBook);
-router.patch("/:id", UpdateBookById);
+router.post("/", validateBook, CreateBook);
+router.patch("/:id", validateBook, UpdateBookById);
 router.delete("/:id", DeleteBookById);
 
 export default router;
