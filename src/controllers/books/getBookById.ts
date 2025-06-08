@@ -8,6 +8,7 @@ export async function GetBookById(req: any, res: any) {
       return res.status(401).json({ message: "Livro não encontrado." });
     }
     return res.json(books);
+
   } catch (error) {
     return res.status(500).json({ error: "Erro ao buscar livros." });
   }

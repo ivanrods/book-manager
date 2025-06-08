@@ -1,13 +1,7 @@
-import express from "express";
-import booksRouter from "./routes/books";
+import app from "./app";
 
-const app = express();
-const port = 3000;
+const PORT = 3000;
 
-app.use(express.json());
-
-app.use("/books", booksRouter);
-
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
