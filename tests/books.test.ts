@@ -1,7 +1,6 @@
 import request from "supertest";
-import db from "../src/database/knex";
 import app from "../src/app";
-
+import db from "./jest.setup";
 
 describe("Books API", () => {
   //teste getAll
