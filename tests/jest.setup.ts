@@ -11,7 +11,8 @@ beforeAll(async () => {
 });
 
 beforeEach(async () => {
-  await db("books").del();
+  
+  await db("authors").del();
 });
 
 afterAll(async () => {
