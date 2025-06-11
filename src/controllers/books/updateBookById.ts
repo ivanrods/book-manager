@@ -2,11 +2,11 @@ import db from "../../database/knex";
 export async function UpdateBookById(req: any, res: any) {
   const { id } = req.params;
 
-  const { title, author, year } = req.body;
+  const { title, description, cover, rating, author_id, year } = req.body;
   try {
     const updated = await db("books")
       .where({ id })
-      .update({ title, author, year });
+      .update({ title, description, cover, rating, author_id, year });
     if (!updated) {
       return res.status(401).json({ message: "Livro não encontrado." });
     }
