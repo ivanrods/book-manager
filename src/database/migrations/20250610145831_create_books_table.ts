@@ -4,7 +4,7 @@ export async function up(knex: Knex): Promise<void> {
   return knex.schema.createTable("books", (table) => {
     table.increments("id").primary();
     table.string("title").notNullable().unique();
-    table.integer("authors_id").unsigned().notNullable()
+    table.integer("author_id").unsigned().notNullable()
       .references("id")
       .inTable("authors")
       .onDelete("CASCADE");
