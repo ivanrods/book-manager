@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { validateAuthor } from "../middlewares/validateAuthor";
 import {
   CreateAuthor,
   DeleteAuthorById,
@@ -10,8 +11,8 @@ const router = Router();
 
 router.get("/", GetAllAuthors);
 router.get("/:id", GetAuthorById);
-router.post("/", CreateAuthor);
-router.patch("/:id", UpdateAuthorById);
+router.post("/", validateAuthor, CreateAuthor);
+router.patch("/:id", validateAuthor, UpdateAuthorById);
 router.delete("/:id", DeleteAuthorById);
 
 export default router;

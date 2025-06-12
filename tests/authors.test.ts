@@ -1,6 +1,5 @@
 import request from "supertest";
 import app from "../src/app";
-import db from "./jest.setup";
 
 describe("Authors API", () => {
   //teste getAll
@@ -59,6 +58,3 @@ describe("Authors API", () => {
 });
 
 
-afterAll(async () => {
-  await db.destroy();
-});

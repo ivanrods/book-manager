@@ -1,6 +1,5 @@
 import request from "supertest";
 import app from "../src/app";
-import db from "./jest.setup";
 
 describe("Books API", () => {
   //teste getAll
@@ -12,15 +11,18 @@ describe("Books API", () => {
   //teste getById
   it("deve retornar status 200 ao buscar um livro por ID", async () => {
     const createAuthor = await request(app).post("/authors").send({
-      name: "Autor Teste",
+      name: "Autor criado",
     });
+
     const authorId = createAuthor.body.id;
+
     const createBook = await request(app).post("/books").send({
       title: "Livro Teste",
       description: "Descrição de teste",
-      cover: "Capa de teste",
+      cover: "https://link-da-imagem.com/capa.jpg",
+      rating: 4.7,
       author_id: authorId,
-      year: 2025,
+      year: 2024,
     });
 
     const bookId = createBook.body.id;
@@ -39,9 +41,10 @@ describe("Books API", () => {
     const createBook = await request(app).post("/books").send({
       title: "Livro Teste",
       description: "Descrição de teste",
-      cover: "Capa de teste",
+      cover: "https://link-da-imagem.com/capa.jpg",
+      rating: 4.7,
       author_id: authorId,
-      year: 2025,
+      year: 2024,
     });
     expect(createBook.status).toBe(201);
   });
@@ -55,17 +58,19 @@ describe("Books API", () => {
     const createBook = await request(app).post("/books").send({
       title: "Livro Teste",
       description: "Descrição de teste",
-      cover: "Capa de teste",
+      cover: "https://link-da-imagem.com/capa.jpg",
+      rating: 4.7,
       author_id: authorId,
-      year: 2025,
+      year: 2024,
     });
 
     const bookId = createBook.body.id;
 
     const updateBook = await request(app).patch(`/books/${bookId}`).send({
-      title: "Livro este atualizado",
-      description: "Descrição de teste atualizada",
-      cover: "Capa de teste atualizada",
+      title: "Livro Teste",
+      description: "Descrição de teste",
+      cover: "https://link-da-imagem.com/capa.jpg",
+      rating: 4.7,
       author_id: authorId,
       year: 2024,
     });
@@ -82,9 +87,10 @@ describe("Books API", () => {
     const createBook = await request(app).post("/books").send({
       title: "Livro Teste",
       description: "Descrição de teste",
-      cover: "Capa de teste",
+      cover: "https://link-da-imagem.com/capa.jpg",
+      rating: 4.7,
       author_id: authorId,
-      year: 2025,
+      year: 2024,
     });
 
     const bookId = createBook.body.id;
@@ -93,8 +99,4 @@ describe("Books API", () => {
 
     expect(deleteBook.status).toBe(200);
   });
-});
-
-afterAll(async () => {
-  await db.destroy();
 });

@@ -6,6 +6,7 @@ export function validateBook(req: Request, _res: Response, next: NextFunction) {
     bookSchema.parse(req.body);
     next();
   } catch (error) {
+   
     next(error);
   }
 }
