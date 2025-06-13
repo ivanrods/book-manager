@@ -15,11 +15,14 @@ const config: { [key: string]: Knex.Config } = {
     },
     useNullAsDefault: true,
     migrations: {
-      directory: path.resolve(__dirname, 'src', "database", "migrations"),
+      directory: path.resolve(__dirname, "src", "database", "migrations"),
+    },
+    seeds: {
+      directory: "./src/database/seeds",
     },
   },
 
-   test: {
+  test: {
     client: "sqlite3",
     connection: {
       filename: process.env.DATABASE_URL!,
